@@ -143,9 +143,12 @@ class ClientHandler(socketserver.BaseRequestHandler):
 
             logger.info(u'Data has been streamed successfully for ' + self.student_name) 
             self.request.close()
+        except ConnectionAbortedError:
+            logger.error(u'Connection was interrupted by ' + self.student_name + u' from ' + str(self.client_address[0]) + ':' + str(self.client_address[1]))
+
         except Exception:
             logger.exception('')
-            traceback.print_exc()
+            #traceback.print_exc()
             self.request.close()
 
 
