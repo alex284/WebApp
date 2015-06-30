@@ -107,7 +107,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
         reply_data = self.request.recv(len)
         signal = task1_heterogeneous_poisson_pb2.Signal()
         signal.ParseFromString(reply_data)
-        self.signals.append((t,signal.signal))           
+        self.signals.append((t, signal.signal))           
         pass
         #Further processing needed
 
